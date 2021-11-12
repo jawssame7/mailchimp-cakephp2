@@ -1,0 +1,5 @@
+/.idea/*
+/Vendor/*
+/Plugin/*
+app/tmp/logs/debug.log
+app/tmp/logs/error.log

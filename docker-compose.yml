@@ -1,0 +1,21 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker-compose.d/app/Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html/
+  db:
+    image: mysql:8.0
+    ports:
+      - "8081:3306"
+    volumes:
+      - ./.docker-compose.d/mysql/mysqld-jssc.cnf:/etc/mysql/conf.d/mysqld-jssc.cnf
+      - db-data:/var/lib/mysql
+    env_file: .env
+    command: --default-authentication-plugin=mysql_native_password
+volumes:
+  db-data:

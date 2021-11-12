@@ -1,0 +1,11 @@
+{
+    "name": "jawsssame7/mailchimp-cakephp2",
+    "require": {
+        "cakephp/cakephp": "2.10.24",
+        "cakephp/debug_kit": "2.2.*",
+        "mailchimp/transactional": "^1.0"
+    },
+    "config": {
+        "vendor-dir": "Vendor/"
+    }
+}

@@ -19,7 +19,7 @@ class MailChimpComponent  extends Component
             $this->_mailchimp = new MailchimpTransactional\ApiClient();
 
             // https://stackoverflow.com/questions/65232548/why-got-error-invalid-key-from-the-metadata-api-of-mailchimp/65234912
-            $this->_mailchimp->setApiKey('GY0R8PKCBMSrbxoJISjikg');
+            $this->_mailchimp->setApiKey('xxxxxxx');
 
             $response = $this->_mailchimp->users->ping();
             CakeLog::debug($response);
@@ -103,10 +103,8 @@ class MailChimpComponent  extends Component
         $appEmail = new AppEmail();
 
 
-        $content = $appEmail->compile('test', ['name' => 'テスト名前', 'hoge' => 'メッセージ']);
-
-//        var_dump($content);
-        return $content;
+        //        var_dump($content);
+        return $appEmail->compile('test', ['name' => 'テスト名前', 'hoge' => 'メッセージ']);
     }
 
 }

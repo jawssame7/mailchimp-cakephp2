@@ -60,24 +60,24 @@ class MailChimpComponent  extends Component
     }
 
     private $_message = [
-        "from_email" => "hogehoge@chan-same.me",
+        "from_email" => "hogehoge@devsame7.me",
         "subject" => "タイトルサブジェクト",
         "text" => "Welcome to Mailchimp Transactional!",
         "to" => [
             [
-                "email" => "test@chan-same.me",
+                "email" => "test@devsame7.me",
                 "type" => "to"
             ],
             [
-                "email" => "test2@chan-same.me",
+                "email" => "test2@devsame7.me",
                 "type" => "to"
             ],
             [
-                "email" => "test3@chan-same.me",
+                "email" => "test3@devsame7.me",
                 "type" => "to"
             ],
             [
-                "email" => "test4@chan-same.me",
+                "email" => "test4@devsame7.me",
                 "type" => "to"
             ]
         ]

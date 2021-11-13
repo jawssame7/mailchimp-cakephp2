@@ -1,5 +1,8 @@
 /.idea/*
 /Vendor/*
 /Plugin/*
+!/app/tmp/cache/models/empty
+!/app/tmp/cache/persistent/empty
+!/app/tmp/cache/views/empty
 app/tmp/logs/debug.log
 app/tmp/logs/error.log

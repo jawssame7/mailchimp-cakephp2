@@ -1,6 +1,7 @@
 /.idea/*
 /Vendor/*
 /Plugin/*
+/app/tmp/*
 !/app/tmp/cache/models/empty
 !/app/tmp/cache/persistent/empty
 !/app/tmp/cache/views/empty

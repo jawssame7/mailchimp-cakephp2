@@ -19,7 +19,7 @@ class MailChimpComponent  extends Component
             $this->_mailchimp = new MailchimpTransactional\ApiClient();
 
             // https://stackoverflow.com/questions/65232548/why-got-error-invalid-key-from-the-metadata-api-of-mailchimp/65234912
-            $this->_mailchimp->setApiKey('xxxxxxx');
+            $this->_mailchimp->setApiKey('');
 
             $response = $this->_mailchimp->users->ping();
             CakeLog::debug($response);
@@ -45,12 +45,16 @@ class MailChimpComponent  extends Component
 //        $message['text'] = $content;
 
         // cakeのメールテンプレートを使って
-        $content = $this->cakeMailTemplateCompile();
-        $message['text'] = $content['text'];
+//        $content = $this->cakeMailTemplateCompile();
+//        $message['text'] = $content['text'];
+
+        //
+
 
         try {
 
-            $response = $this->_mailchimp->messages->send(["message" => $message]);
+//            $response = $this->_mailchimp->messages->send(["message" => $message]);
+            $response = $this->sendTemplateMail();
             var_dump($response);
             CakeLog::debug('メール送信');
         } catch (Error $e) {
@@ -96,6 +100,44 @@ class MailChimpComponent  extends Component
         return $response;
     }
 
+    function sendTemplateMail()
+    {
+        $response = $this->_mailchimp->messages->sendTemplate([
+            "template_name" => "template_variable1",
+            'template_content'=>[["name"=>'','content'=>'']],
+            //"template_content" => [[]],
+            "message" => [
+                'merge' => true,
+                "to" => [
+                    [
+                        "email" => "test@devsame7.me",
+                        "type" => "to"
+                    ]
+                ],
+                'merge_language' => 'handlebars',
+                'global_merge_vars' => [
+                    [
+                        'name' => 'name',
+                        'content' => '斎藤たかお'
+                    ],
+                    [
+                        'name' => 'entry_code',
+                        'content' => '2'
+                    ],
+                    [
+                        'name' => 'payedUrl',
+                        'content' => 'https://www.yahoo.co.jp'
+                    ],
+                ]
+            ],
+        ]);
+        var_dump($response);
+    }
+
+    /**
+     * cakePHPのメールテンプレートからコンテンツを取得する
+     * @return array
+     */
     function cakeMailTemplateCompile()
     {
         App::import ( 'Vendor', 'AppEmail');
